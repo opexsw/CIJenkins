@@ -1,0 +1,22 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<hudson.plugins.sonar.SonarPublisher_-DescriptorImpl plugin="sonar@2.2.1">
+  <installations>
+    <hudson.plugins.sonar.SonarInstallation>
+      <name>SonarQube</name>
+      <disabled>false</disabled>
+      <serverUrl>http://45.55.150.4:9000</serverUrl>
+      <mojoVersion></mojoVersion>
+      <databaseUrl>jdbc:mysql://45.55.150.4:3306/sonar?autoReconnect=true</databaseUrl>
+      <databaseLogin>sonar</databaseLogin>
+      <additionalProperties></additionalProperties>
+      <triggers>
+        <skipScmCause>false</skipScmCause>
+        <skipUpstreamCause>false</skipUpstreamCause>
+        <envVar></envVar>
+      </triggers>
+      <sonarLogin>admin</sonarLogin>
+      <databaseSecret>5S/JdKrc8niydLhHMJvfyAKS6R4IBg7lK85gbUWg+zg=</databaseSecret>
+      <sonarSecret>GH7G3lidDY/a6M9XeDs9/QKS6R4IBg7lK85gbUWg+zg=</sonarSecret>
+    </hudson.plugins.sonar.SonarInstallation>
+  </installations>
+</hudson.plugins.sonar.SonarPublisher_-DescriptorImpl>
