@@ -10,6 +10,8 @@ include_recipe 'apt'
 # Recipe for php
 #include_recipe 'php'
 
+
+
 # Jenkins Master Installation Recipe
 
 include_recipe 'jenkins::master'
@@ -18,6 +20,13 @@ include_recipe 'jenkins::master'
 
 service 'jenkins' do
   action  :nothing
+end
+
+
+directory '/var/chef/cache/' do
+  action :create
+  mode 600
+  recursive true
 end
 
 # SSH Key to Connect to Other Servers
@@ -96,8 +105,8 @@ end
 
 # Packages for Git and java
 
-packages = node['CIJenkins']['jenkins']['packages']
-%W( packages ).each do |pkg|
+
+node['CIJenkins']['jenkins']['packages'].each do |pkg|
   package "#{pkg}" do
     action :install
     ignore_failure true
