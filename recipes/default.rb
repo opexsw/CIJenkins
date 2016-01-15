@@ -95,7 +95,7 @@ template "/var/lib/jenkins/hudson.plugins.sonar.SonarRunnerInstallation.xml" do
 end
 
 # Packages for Git and java
-#TODO : move the list of packages to atrribute
+
 packages = node['CIJenkins']['jenkins']['packages']
 %W( packages ).each do |pkg|
   package "#{pkg}" do
@@ -218,7 +218,7 @@ jenkins_job "StaticCodeAnalysis" do
 end
 
 # Credentials Required for the 'Build' Project
-#TODO : move the credentials to attributes. user should be opexciinabox/0pexc11n@b0x
+
 jenkins_password_credentials node['CIJenkins']['jenkins']['username'] do
   id 'd376a4f4-6dea-4455-a7c5-f9f55333b5c4'
   description 'Git'
