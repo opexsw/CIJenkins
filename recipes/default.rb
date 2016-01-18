@@ -167,15 +167,15 @@ execute "Change Permissions of Jenkins dir" do
   action :run
 end
 
-# Jenkins Authentication
 
-cookbook_file "/var/chef/cache/jenkins-cli.jar" do
-  source "jenkins-cli.jar"
-  mode "600"
-  owner "jenkins"
-  group 'jenkins'
+
+execute "Download Jenkins-cli jar" do
+  cwd "/var/chef/cache/"
+  command "wget http://localhost:8080/jnlpJars/jenkins-cli.jar"
+  action :run
 end
 
+# Jenkins Authentication
 execute "Jenkins Login" do
   command "java -jar /var/chef/cache/jenkins-cli.jar -s http://localhost:#{port} login --username #{loginusername} --password #{loginpassword}"
   action :run
