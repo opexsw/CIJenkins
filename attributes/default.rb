@@ -6,3 +6,6 @@ default['CIJenkins']['jenkins']['plugins'] = ["pam-auth",  "junit","token-macro"
 default['CIJenkins']['jenkins']['packages'] = ["openjdk-7-jdk", "git"]
 default['CIJenkins']['jenkins']['username'] = "opexciinabox"
 default['CIJenkins']['jenkins']['password'] = "0pexc11n@b0x"
+default['CIJenkins']['jenkins']['loginpassword'] = "opexadmin"
+default['CIJenkins']['jenkins']['loginusername'] = "admin"
+default['CIJenkins']['jenkins']['port'] = 8080

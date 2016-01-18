@@ -177,7 +177,7 @@ cookbook_file "/var/chef/cache/jenkins-cli.jar" do
 end
 
 execute "Jenkins Login" do
-  command "java -jar /var/chef/cache/jenkins-cli.jar -s http://localhost:8080 login --username admin --password opexadmin "
+  command "java -jar /var/chef/cache/jenkins-cli.jar -s http://localhost:#{port} login --username #{loginusername} --password #{loginpassword}"
   action :run
   ignore_failure true
 end
