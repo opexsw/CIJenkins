@@ -36,8 +36,8 @@ directory '/var/chef/cache/' do
   action :create
   mode 0755
   recursive true
-  owner root
-  group root
+  owner "root"
+  group "root"
 end
 
 # SSH Key to Connect to Other Servers
