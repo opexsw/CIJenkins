@@ -283,6 +283,7 @@ end
 
 execute "Install Composer in Magento Dir" do
   cwd "#{node['CIJenkins']['jenkins']['magento_dir']}"
-  command "composer install -n"
+  #command "composer install -n"
+  command "curl -sS https://getcomposer.org/installer | sudo php -- --install-dir=#{node['CIJenkins']['jenkins']['magento_dir']} --filename=composer"
   action :run
 end
