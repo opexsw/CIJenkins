@@ -25,8 +25,10 @@ end
 
 directory '/var/chef/cache/' do
   action :create
-  mode 600
+  mode 0755
   recursive true
+  owner root
+  group root
 end
 
 # SSH Key to Connect to Other Servers
@@ -167,13 +169,17 @@ execute "Change Permissions of Jenkins dir" do
   action :run
 end
 
-
+port = node['CIJenkins']['jenkins']['port']
+loginpassword = node['CIJenkins']['jenkins']['loginpassword']
+loginusername = node['CIJenkins']['jenkins']['loginusername']
 
 execute "Download Jenkins-cli jar" do
   cwd "/var/chef/cache/"
-  command "wget http://localhost:8080/jnlpJars/jenkins-cli.jar"
+  command "wget http://localhost:#{port}/jnlpJars/jenkins-cli.jar"
   action :run
+  not_if { File.exists?("/var/chef/cache/jenkins-cli.jar") }
 end
+
 
 # Jenkins Authentication
 execute "Jenkins Login" do
