@@ -178,6 +178,8 @@ execute "Download Jenkins-cli jar" do
   cwd "/var/chef/cache/"
   command "wget http://localhost:#{port}/jnlpJars/jenkins-cli.jar"
   action :run
+  retries 10
+  retry_delay 15
   not_if { File.exists?("/var/chef/cache/jenkins-cli.jar") }
 end
 
