@@ -10,6 +10,15 @@ include_recipe 'apt'
 # Recipe for php
 #include_recipe 'php'
 
+# Packages for Git and java
+
+
+node['CIJenkins']['jenkins']['packages'].each do |pkg|
+  package "#{pkg}" do
+    action :install
+    ignore_failure true
+  end
+end
 
 
 # Jenkins Master Installation Recipe
@@ -105,15 +114,7 @@ template "/var/lib/jenkins/hudson.plugins.sonar.SonarRunnerInstallation.xml" do
   group 'jenkins'
 end
 
-# Packages for Git and java
 
-
-node['CIJenkins']['jenkins']['packages'].each do |pkg|
-  package "#{pkg}" do
-    action :install
-    ignore_failure true
-  end
-end
 
 # Remove after adding LWRP to clone git repo with username and password
 =begin
